@@ -5,9 +5,9 @@ import { galleryItems } from './gallery-items';
 console.log(galleryItems);
 
 // Описан в документации
-import SimpleLightbox from "simplelightbox";
+import SimpleLightbox from 'simplelightbox';
 // Дополнительный импорт стилей
-import "simplelightbox/dist/simple-lightbox.min.css";
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const galleryInner = document.querySelector('.gallery');
 
@@ -20,5 +20,15 @@ function createGalleryItem(galleryItems) {
    alt="${description}" />
 </a>`;
     })
-    .join("");
+    .join('');
 }
+
+const galleryMarkUp = createGalleryItem(galleryItems);
+
+galleryInner.insertAdjacentHTML('beforeend', galleryMarkUp);
+
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+});
